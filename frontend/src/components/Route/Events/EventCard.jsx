@@ -48,7 +48,7 @@ const EventCard = ({ active, data }) => {
             </h5>
           </div>
           <span className="pr-3 font-[400] text-[17px] text-[#44a55e]">
-            {data.sold_out ? data.sold_out : 0} Sold
+            {data?.sold_out ? data?.sold_out : 0} Sold
           </span>
         </div>
         <Countdown data={data} />

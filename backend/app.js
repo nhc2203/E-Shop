@@ -4,7 +4,6 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -14,9 +13,9 @@ app.use(
 
 app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
-app.use("/", (req, res) => {
-  res.send("Hello world!");
-});
+// app.use("/", (req, res) => {
+//   res.send("Hello world!");
+// });
 app.use(bodyParser.json({ extended: true, limit: "50mb" }));
 app.use(
   bodyParser.urlencoded({
@@ -30,7 +29,7 @@ app.use(
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
-    path: "config/.env",
+    path: "./config/.env",
   });
 }
 
