@@ -334,7 +334,6 @@ const SellerInbox = ({
   handlerImageUpload,
   scrollRef,
 }) => {
-  console.log(messages.images);
   return (
     <div className="w-full min-h-full flex flex-col justify-between">
       {/* Message Header */}
