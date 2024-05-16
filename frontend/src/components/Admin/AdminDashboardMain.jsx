@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
+import React, { useEffect } from "react";
+import { AiOutlineMoneyCollect } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { MdBorderClear } from "react-icons/md";
 import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../../redux/actions/order";
 import Loader from "../Layout/Loader";
@@ -21,7 +20,7 @@ const AdminDashboardMain = () => {
   useEffect(() => {
     dispatch(getAllOrdersOfAdmin());
     dispatch(getAllSellers());
-  }, []);
+  }, [dispatch]);
 
   const adminEarning =
     adminOrders &&

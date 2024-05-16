@@ -14,9 +14,11 @@ const FeatureProduct = () => {
             {allProducts && allProducts.length !== 0 && (
               <>
                 {allProducts &&
-                  allProducts.map((i, index) => {
-                    return <ProductCard data={i} key={index} />;
-                  })}
+                  allProducts
+                    .map((i, index) => {
+                      return <ProductCard data={i} key={index} />;
+                    })
+                    .slice(0, 5)}
               </>
             )}
           </div>

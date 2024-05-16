@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { RxCross1 } from "react-icons/rx";
 import { BsCartPlus } from "react-icons/bs";
 import { removeFromWishlist } from "../../redux/actions/wishlist";
@@ -74,8 +74,8 @@ const Wishlist = ({ setOpenWishList }) => {
 };
 
 const CartSingle = ({ data, removeFromWishlistHandler, addToCartHandler }) => {
-  const [value, setValue] = useState(1);
-  const totalPrice = data.discountPrice * value;
+  // const [value, setValue] = useState(1);
+  const totalPrice = data.discountPrice * 1;
   return (
     <div className="border-b p-4">
       <div className="w-full flex items-center">

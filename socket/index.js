@@ -4,7 +4,7 @@ const https = require("https");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const server = https.createServer(app);
+const server = http.createServer(app);
 const io = socketIO(server);
 const dotenv = require("dotenv");
 
@@ -113,5 +113,3 @@ io.on("connection", (socket) => {
 server.listen(process.env.PORT || 4000, () => {
   console.log(`server is running on port ${process.env.PORT || 4000}`);
 });
-
-export default app;

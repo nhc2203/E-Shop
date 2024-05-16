@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, getAllProductsShop } from "../../redux/actions/product";
 import { Link } from "react-router-dom";
@@ -6,8 +6,6 @@ import { Button } from "@material-ui/core";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { DataGrid } from "@material-ui/data-grid";
 import Loader from "../Layout/Loader";
-import styles from "../../styles/styles";
-import { RxCross1 } from "react-icons/rx";
 
 const AllProducts = () => {
   const { products, isLoading } = useSelector((state) => state.product);
@@ -16,7 +14,7 @@ const AllProducts = () => {
 
   useEffect(() => {
     dispatch(getAllProductsShop(seller._id));
-  }, [dispatch]);
+  }, [dispatch, seller._id]);
 
   const handleDelete = (id) => {
     console.log(id);

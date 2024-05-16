@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
@@ -13,12 +13,11 @@ const DashboardHero = () => {
   const { seller } = useSelector((state) => state.seller);
   const { orders } = useSelector((state) => state.order);
   const { products } = useSelector((state) => state.product);
-  const [deliveredOrder, setDeliveredOrder] = useState(null);
 
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
     dispatch(getAllProductsShop(seller._id));
-  }, []);
+  }, [dispatch, seller._id]);
 
   const availableBalance = seller?.availableBalance.toFixed(2);
 
@@ -100,7 +99,7 @@ const DashboardHero = () => {
           <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">
             ${availableBalance}
           </h5>
-          <Link to="/dashboard-withraw-money">
+          <Link to="/dashboard-withdraw-money">
             <h5 className="pt-4 pl-2 text-[#077f9c]">Withdraw Money</h5>
           </Link>
         </div>

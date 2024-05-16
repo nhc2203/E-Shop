@@ -11,7 +11,6 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 const WithDrawMoney = () => {
   const dispatch = useDispatch();
-  const { orders } = useSelector((state) => state.order);
   const { seller } = useSelector((state) => state.seller);
   const [paymentMethod, setPaymentMethod] = useState(false);
   const [open, setOpen] = useState(false);
@@ -27,7 +26,7 @@ const WithDrawMoney = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
-  }, [dispatch]);
+  }, [dispatch, seller._id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

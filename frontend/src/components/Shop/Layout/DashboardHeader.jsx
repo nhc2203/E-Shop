@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FiPackage, FiShoppingBag } from "react-icons/fi";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import { backend_url } from "../../../server";
 const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
   return (

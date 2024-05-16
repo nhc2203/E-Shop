@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
@@ -8,7 +8,9 @@ import { TfiGallery } from "react-icons/tfi";
 import styles from "../../styles/styles";
 import socketIO from "socket.io-client";
 import { format } from "timeago.js";
-const ENDPOINT = "https://e-shop-yhgl.vercel.app/";
+// const ENDPOINT = "https://e-shop-yhgl.vercel.app/";
+const ENDPOINT = "http://localhost:4000";
+
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
@@ -400,7 +402,6 @@ const SellerInbox = ({
 
       {/* Send Message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >

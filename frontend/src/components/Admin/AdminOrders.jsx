@@ -6,13 +6,11 @@ import { DataGrid } from "@material-ui/data-grid";
 const AdminOrders = () => {
   const dispatch = useDispatch();
 
-  const { adminOrders, adminOrderLoading } = useSelector(
-    (state) => state.order
-  );
+  const { adminOrders } = useSelector((state) => state.order);
 
   useEffect(() => {
     dispatch(getAllOrdersOfAdmin());
-  }, []);
+  }, [dispatch]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },

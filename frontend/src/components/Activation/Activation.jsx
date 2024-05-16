@@ -21,7 +21,7 @@ const Activation = () => {
       };
       activationEmail();
     }
-  }, []);
+  }, [activation_token]);
   return (
     <div
       style={{

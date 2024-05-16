@@ -5,7 +5,6 @@ import styles from "../../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { getAllEventsShop } from "../../redux/actions/event";
-import { backend_url } from "../../server";
 import Ratings from "../Products/Ratings";
 
 const ShopProfileData = ({ isOwner }) => {
@@ -19,7 +18,7 @@ const ShopProfileData = ({ isOwner }) => {
   useEffect(() => {
     dispatch(getAllProductsShop(id));
     dispatch(getAllEventsShop(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const allReviews =
     products && products.map((product) => product.reviews).flat();
@@ -69,11 +68,18 @@ const ShopProfileData = ({ isOwner }) => {
       </div>
       <br />
       {active === 1 && (
-        <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] xl:grid-cols-4 xl:gap-[20px] mb-12 border-0">
-          {products &&
-            products.map((i, index) => (
-              <ProductCard data={i} key={index} isShop={true} />
-            ))}
+        <div className="w-full">
+          <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] xl:grid-cols-4 xl:gap-[20px] mb-12 border-0">
+            {products &&
+              products.map((i, index) => (
+                <ProductCard data={i} key={index} isShop={true} />
+              ))}
+          </div>
+          {products && products.length === 0 && (
+            <h5 className="w-full text-center py-5 text-[18px]">
+              No Products have for this shop!
+            </h5>
+          )}
         </div>
       )}
 
@@ -85,6 +91,11 @@ const ShopProfileData = ({ isOwner }) => {
                 <ProductCard data={i} key={index} isEvent={true} />
               ))}
           </div>
+          {events && events.length === 0 && (
+            <h5 className="w-full text-center py-5 text-[18px]">
+              No Events have for this shop!
+            </h5>
+          )}
         </div>
       )}
 
@@ -94,7 +105,7 @@ const ShopProfileData = ({ isOwner }) => {
             allReviews.map((item, index) => (
               <div className="w-full flex my-4">
                 <img
-                  src={`${backend_url}/${item.user.avatar}`}
+                  src={`${item.user.avatar.url}`}
                   className="w-[50px] h-[50px] rounded-full"
                   alt=""
                 />
@@ -110,6 +121,11 @@ const ShopProfileData = ({ isOwner }) => {
                 </div>
               </div>
             ))}
+          {allReviews && allReviews.length === 0 && (
+            <h5 className="w-full text-center py-5 text-[18px]">
+              No Reviews have for this shop!
+            </h5>
+          )}
         </div>
       )}
     </div>

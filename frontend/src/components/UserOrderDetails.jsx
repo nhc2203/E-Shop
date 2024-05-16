@@ -3,7 +3,7 @@ import { BsFillBagFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/styles";
-import { backend_url, server } from "../server";
+import { server } from "../server";
 import { getAllOrdersOfUser } from "../redux/actions/order";
 import { RxCross1 } from "react-icons/rx";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -21,7 +21,7 @@ const UserOrderDetails = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
-  }, [dispatch]);
+  }, [dispatch, user._id]);
 
   const data = orders && orders.find((item) => item._id === id);
 
@@ -86,7 +86,7 @@ const UserOrderDetails = () => {
         data?.cart.map((item, i) => (
           <div className="w-full flex items-start mb-5">
             <img
-              src={`${backend_url}/${item.images[0]}`}
+              src={`${item?.images[0]?.url}`}
               alt=""
               className="w-[80px] h-[80px]"
             />
@@ -98,7 +98,7 @@ const UserOrderDetails = () => {
                 </h5>
               </div>
             </div>
-            {item.isReviewed !== true && item.status !== "Delivered" ? null : (
+            {!item.isReviewed && data?.status !== "Delivered" ? null : (
               <div
                 className={`${styles.button} text-[#fff]`}
                 onClick={() => setOpen(true) || setSelectedItem(item)}
@@ -126,13 +126,13 @@ const UserOrderDetails = () => {
             <br />
             <div className="w-full flex">
               <img
-                src={`${backend_url}/${selectedItem?.images[0]}`}
+                src={`${selectedItem?.images[0]?.url}`}
                 alt=""
                 className="w-[80px] h-[80px]"
               />
               <div className="pl-3 text-[20px]">{selectedItem?.name}</div>
               <h4 className="pl-3 text-[20px]">
-                US${selectedItem?.discountPrie} x {selectedItem?.qty}
+                US${selectedItem?.discountPrice} x {selectedItem?.qty}
               </h4>
             </div>
             <br />

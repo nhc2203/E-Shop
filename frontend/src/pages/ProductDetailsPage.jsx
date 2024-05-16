@@ -21,7 +21,7 @@ const ProductDetailsPage = () => {
       const data = allProducts && allProducts.find((i) => i._id === id);
       setData(data);
     }
-  }, [allEvents, allProducts]);
+  }, [allEvents, allProducts, eventData, id]);
   return (
     <div>
       <Header />

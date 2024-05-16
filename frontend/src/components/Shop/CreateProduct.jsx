@@ -52,19 +52,6 @@ const CreateProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const newForm = new FormData();
-    // newForm.append("name", name);
-    // newForm.append("description", description);
-    // newForm.append("category", category);
-    // newForm.append("tags", tags);
-    // newForm.append("originalPrice", originalPrice);
-    // newForm.append("discountPrice", discountPrice);
-    // newForm.append("stock", stock);
-    // newForm.append("shopId", seller._id);
-    // images.forEach((image) => {
-    //   newForm.set("images", image);
-    // });
-
     dispatch(
       createProduct({
         name,
@@ -110,7 +97,7 @@ const CreateProduct = () => {
             type="text"
             name="description"
             value={description}
-            className="mt-2 appearance-none block w-full pt-2 px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 sm:text-sm"
+            className="mt-2 appearance-none block w-full pt-2 px-3 border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 sm:text-sm"
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Enter product description..."
           ></textarea>
@@ -121,7 +108,7 @@ const CreateProduct = () => {
             Category <span className="text-red-500">*</span>
           </label>
           <select
-            className="w-full mt-2 border h-[35px] rounded-[35px] rounded-[5px]"
+            className="w-full mt-2 border h-[35px] rounded-[5px]"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >

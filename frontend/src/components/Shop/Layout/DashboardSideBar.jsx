@@ -110,7 +110,7 @@ const DashboardSideBar = ({ active }) => {
 
       <div className="w-full flex items-center p-4">
         <Link
-          to="/dashboard-withraw-money"
+          to="/dashboard-withdraw-money"
           className="w-full flex items-center"
         >
           <CiMoneyBill

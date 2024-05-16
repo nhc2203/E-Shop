@@ -22,7 +22,7 @@ const SellerActivation = () => {
       };
       sendRequest();
     }
-  }, []);
+  }, [activation_token]);
   return (
     <div
       style={{

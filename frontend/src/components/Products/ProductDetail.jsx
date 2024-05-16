@@ -7,7 +7,7 @@ import {
   AiOutlineMessage,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { toast } from "react-toastify";
@@ -37,7 +37,7 @@ const ProductDetail = ({ data }) => {
     } else {
       setClick(false);
     }
-  }, [data, wishlist]);
+  }, [data, dispatch, wishlist]);
 
   const removeFromWishlistHandler = (data) => {
     setClick(!click);

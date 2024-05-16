@@ -4,12 +4,12 @@ import { BsFillBagFill } from "react-icons/bs";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfShop } from "../../redux/actions/order";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const OrderDetails = () => {
-  const { orders, isLoading } = useSelector((state) => state.order);
+  const { orders } = useSelector((state) => state.order);
   const { seller } = useSelector((state) => state.seller);
   const dispatch = useDispatch();
   const [status, setStatus] = useState("");
@@ -19,10 +19,9 @@ const OrderDetails = () => {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
-  }, [dispatch]);
+  }, [dispatch, seller._id]);
 
   const data = orders && orders.find((item) => item._id === id);
-  console.log(data);
 
   const orderUpdateHandler = async (e) => {
     await axios
@@ -97,11 +96,6 @@ const OrderDetails = () => {
                   US${item.discountPrice} x {item.qty}
                 </h5>
               </div>
-              {data?.status === "Delivered" && (
-                <div className={`${styles.button} text-[#00000091]`}>
-                  Write a review
-                </div>
-              )}
             </div>
           </div>
         ))}

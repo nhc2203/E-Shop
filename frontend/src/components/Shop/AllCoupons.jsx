@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct, getAllProductsShop } from "../../redux/actions/product";
-import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
-import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { DataGrid } from "@material-ui/data-grid";
 import Loader from "../Layout/Loader";
 import styles from "../../styles/styles";
@@ -39,7 +37,7 @@ const AllCoupons = () => {
       .catch((err) => {
         setIsLoading(false);
       });
-  }, [dispatch]);
+  }, [dispatch, seller._id]);
 
   const handleDelete = async (id) => {
     axios
@@ -155,7 +153,7 @@ const AllCoupons = () => {
                   Create Coupon Code
                 </h5>
                 {/* Create coupon */}
-                <form onSubmit={handleSubmit} aria-required={true}>
+                <form onSubmit={handleSubmit}>
                   <br />
                   <div>
                     <label htmlFor="" className="pb-2">
@@ -221,7 +219,7 @@ const AllCoupons = () => {
                       Selected Products
                     </label>
                     <select
-                      className="w-full mt-2 border h-[35px] rounded-[35px] rounded-[5px]"
+                      className="w-full mt-2 border h-[35px] rounded-[5px]"
                       value={selectedProducts}
                       onChange={(e) => setSelectedProducts(e.target.value)}
                     >

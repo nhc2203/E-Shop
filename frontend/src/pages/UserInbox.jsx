@@ -3,13 +3,15 @@ import Header from "../components/Layout/Header";
 import { useSelector } from "react-redux";
 import socketIO from "socket.io-client";
 import { format } from "timeago.js";
-import { backend_url, server } from "../server";
+import { server } from "../server";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/styles";
-const ENDPOINT = "https://e-shop-yhgl.vercel.app/";
+// const ENDPOINT = "https://e-shop-yhgl.vercel.app/";
+const ENDPOINT = "http://localhost:4000";
+
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
@@ -281,7 +283,7 @@ const MessageList = ({
       }
     };
     getUser();
-  }, [me, data]);
+  }, [me, data, setActiveStatus, online]);
 
   return (
     <div
@@ -400,7 +402,6 @@ const SellerInbox = ({
 
       {/* send message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >

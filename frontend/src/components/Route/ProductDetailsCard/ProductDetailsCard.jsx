@@ -9,7 +9,6 @@ import {
 import styles from "../../../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
 import { toast } from "react-toastify";
 import { addToCart } from "../../../redux/actions/cart";
 import {
@@ -40,7 +39,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
     } else {
       setClick(false);
     }
-  }, [wishlist]);
+  }, [data._id, wishlist]);
 
   const decrementCount = () => {
     if (count > 1) {
@@ -117,9 +116,9 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     ? data.name.slice(0, 50) + "..."
                     : data.name}
                 </h1>
-                <p className="text-[15px] font-[300]">
-                  {data.description.length > 1000
-                    ? data.description.slice(0, 1000) + "..."
+                <p className="text-[15px] font-[300] whitespace-pre-line">
+                  {data.description.length > 700
+                    ? data.description.slice(0, 700) + "..."
                     : data.description}
                 </p>
 
